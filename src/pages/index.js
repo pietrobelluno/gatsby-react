@@ -2,13 +2,12 @@ import React from "react";
 import Layout from "../components/Layout";
 import SEO from "../components/seo";
 import { Link } from "gatsby";
+import PostItem from "../components/PostItem";
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <h1>Home</h1>
-    <a href="about">About</a>
-    <Link to="about">About</Link>
+    <PostItem></PostItem>
   </Layout>
 );
 
