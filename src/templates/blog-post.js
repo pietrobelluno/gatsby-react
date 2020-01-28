@@ -3,7 +3,6 @@ import { graphql } from "gatsby";
 
 const BlogPost = ({ data }) => {
   const post = data.markdownRemark;
-  console.warn(post);
   return (
     <>
       <h1>{post.frontmatter.title}</h1>
