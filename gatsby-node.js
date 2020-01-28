@@ -31,6 +31,7 @@ exports.createPages = ({ graphql, actions }) => {
   // Variables can be added as the second function parameter
   return graphql(
     `
+      {
         allMarkdownRemark {
           edges {
             node {
@@ -40,6 +41,7 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
+      }
     `,
     { limit: 1000 }
   ).then(result => {
@@ -48,11 +50,11 @@ exports.createPages = ({ graphql, actions }) => {
     }
 
     // Create blog post pages.
-    result.data.allMarkdownRemark.edges.forEach(node => {
+    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       createPage({
         // Path for this page — required
         path: `${node.fields.slug}`,
-        component: path.resolve("./src/templates/blog-post.js"),
+        component: blogPostTemplate,
         context: {
           slug: node.fields.slug
         }
